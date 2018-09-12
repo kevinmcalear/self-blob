@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style>
+		@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400');
+			* {
+				font-family: 'Source Sans Pro', sans-serif;
+				/*font-family: 'Jaden';*/
+				/*letter-spacing: 10px;*/
+			}
+			body {
+				text-align: center;
+			}
+			h1, h2 {
+				font-size: 60px;
+				font-weight: 100;
+			}
+		</style>
 	</head>
 	<body>
+		<h1>
+			<span id="text"></span>
+		</h1>
 		<canvas id="self-blob"></canvas>
 		<script src="js/three.min.js"></script>
 		<script src="js/perlin.js"></script>
 		<script src="js/TweenMax.min.js"></script>
 		<script src="js/TrackballControls.js"></script>
+		<script src="js/typing.min.js"></script>
 		<script src="js/selfBlob.js"></script>
+		<script src="js/intro.js"></script>
 	</body>
 </html>

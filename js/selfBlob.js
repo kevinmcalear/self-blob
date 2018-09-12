@@ -26,10 +26,18 @@ light2.position.set(-200, 300, 400);
 scene.add(light2);
 
 var geometry = new THREE.IcosahedronGeometry(120, 4);
+// var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+// var geometry = new THREE.ParametricGeometry( THREE.ParametricGeometries.klein, 25, 25 );
 for(var i = 0; i < geometry.vertices.length; i++) {
     var vector = geometry.vertices[i];
     vector._o = vector.clone();  
 }
+// var material = new THREE.MeshBasicMaterial({
+//     color: 0x23f660, 
+//     // emissiveIntensity: 0,
+//     // shininess: 1
+//     wireframe: true
+// });
 var material = new THREE.MeshPhongMaterial({
     emissive: 0x23f660, 
     emissiveIntensity: 0,
@@ -54,7 +62,7 @@ function updateVertices (a) {
 }
 
 
-controls = new THREE.TrackballControls( camera );
+var controls = new THREE.TrackballControls( camera );
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.2;
 controls.panSpeed = 0.8;
