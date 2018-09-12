@@ -3,11 +3,12 @@ var width = window.innerWidth - 100, // canvas.offsetWidth
     height = window.innerHeight - 100; // canvas.offsetHeight
 var renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    antialias: true
+    antialias: true,
+    alpha: true
 });
 renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
 renderer.setSize(width, height);
-renderer.setClearColor(0xffffff);
+renderer.setClearColor(0xffffff, 0);
 
 var scene = new THREE.Scene();
 
