@@ -52,7 +52,18 @@ function updateVertices (a) {
     geometry.verticesNeedUpdate = true;
 }
 
+
+controls = new THREE.TrackballControls( camera );
+controls.rotateSpeed = 1.0;
+controls.zoomSpeed = 1.2;
+controls.panSpeed = 0.8;
+controls.noZoom = false;
+controls.noPan = false;
+controls.staticMoving = true;
+controls.dynamicDampingFactor = 0.3;
+
 function render(a) {
+    controls.update();
     requestAnimationFrame(render);
     updateVertices(a);
     renderer.render(scene, camera);
