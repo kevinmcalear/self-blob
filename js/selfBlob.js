@@ -15,8 +15,8 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 10000);
 camera.position.set(120, 0, 300);
 
-var light = new THREE.HemisphereLight(0xff0000, 0x0C056D, 0.6);
-scene.add(light);
+var hemiLight = new THREE.HemisphereLight(0xff0000, 0x0C056D, 0.6);
+scene.add(hemiLight);
 
 var light = new THREE.DirectionalLight(0x590D82, 0.5);
 light.position.set(200, 300, 400); 
@@ -26,23 +26,18 @@ light2.position.set(-200, 300, 400);
 scene.add(light2);
 
 var geometry = new THREE.IcosahedronGeometry(120, 4);
-// var geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
-// var geometry = new THREE.ParametricGeometry( THREE.ParametricGeometries.klein, 25, 25 );
+
 for(var i = 0; i < geometry.vertices.length; i++) {
     var vector = geometry.vertices[i];
     vector._o = vector.clone();  
 }
-// var material = new THREE.MeshBasicMaterial({
-//     color: 0x23f660, 
-//     // emissiveIntensity: 0,
-//     // shininess: 1
-//     wireframe: true
-// });
+
 var material = new THREE.MeshPhongMaterial({
     emissive: 0x23f660, 
     emissiveIntensity: 0,
     shininess: 1
 });
+
 var shape = new THREE.Mesh(geometry, material);
 scene.add(shape);
 
