@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<style>
 		@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400');
 			* {
@@ -28,12 +29,18 @@
 			<span id="blinker"></span>
 		</h1>
 		<canvas id="self-blob"></canvas>
+		<script type="text/javascript">
+			document.addEventListener('touchmove', function (event) {
+			  if (event.scale !== 1) { event.preventDefault(); }
+			}, false);
+		</script>
 		<script src="js/three.min.js"></script>
 		<script src="js/perlin.js"></script>
 		<script src="js/TweenMax.min.js"></script>
 		<script src="js/TrackballControls.js"></script>
 		<script src="js/typing.min.js"></script>
 		<script src="js/selfBlob.js"></script>
+		<script src="js/blobControls.js"></script>
 		<script src="js/intro.js"></script>
 	</body>
 </html>

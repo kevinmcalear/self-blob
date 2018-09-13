@@ -13,7 +13,7 @@ renderer.setClearColor(0xffffff, 0);
 var scene = new THREE.Scene();
 
 var camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 10000);
-camera.position.set(120, 0, 300);
+camera.position.set(120, 0, 250);
 
 var hemiLight = new THREE.HemisphereLight(0xff0000, 0x0C056D, 0.6);
 scene.add(hemiLight);
@@ -39,16 +39,22 @@ var material = new THREE.MeshPhongMaterial({
 });
 
 var shape = new THREE.Mesh(geometry, material);
+shape.matrixAutoUpdate = false;
 scene.add(shape);
 
+var multipler = { 
+    x: 0.006,
+    y: 0.006,
+    z: 0.006,
+}
 function updateVertices (a) {
     for(var i = 0; i < geometry.vertices.length; i++) {
         var vector = geometry.vertices[i];
         vector.copy(vector._o);
         var perlin = noise.simplex3(
-            (vector.x * 0.006) + (a * 0.0002),
-            (vector.y * 0.006) + (a * 0.0003),
-            (vector.z * 0.006)
+            (vector.x * multipler.x) + (a * 0.0002),
+            (vector.y * multipler.y) + (a * 0.0003),
+            (vector.z * multipler.z)
         );
         var ratio = ((perlin*0.4 * (mouse.y+0.1)) + 0.8);
         vector.multiplyScalar(ratio);
@@ -58,11 +64,11 @@ function updateVertices (a) {
 
 
 var controls = new THREE.TrackballControls( camera );
-controls.rotateSpeed = 1.0;
+controls.rotateSpeed = 1.5;
 controls.zoomSpeed = 1.2;
 controls.panSpeed = 0.8;
-controls.noZoom = false;
-controls.noPan = false;
+controls.noZoom = true;
+controls.noPan = true;
 controls.staticMoving = true;
 controls.dynamicDampingFactor = 0.3;
 
